@@ -16,26 +16,26 @@ function LineChart({ data }) {
       <ResponsiveContainer width="100%" height={300}>
         <ReLineChart data={data}>
           
-          {/* Grid */}
+          
           <CartesianGrid
             strokeDasharray="3 3"
             stroke="rgba(150,150,150,0.2)"
           />
 
-          {/* X Axis */}
+          
           <XAxis
             dataKey="date"
             tick={{ fontSize: 12 }}
             stroke="#888"
           />
 
-          {/* Y Axis */}
+         
           <YAxis
             tick={{ fontSize: 12 }}
             stroke="#888"
           />
 
-          {/* Tooltip */}
+          
           <Tooltip
             contentStyle={{
               background: "var(--bg)",
@@ -45,7 +45,7 @@ function LineChart({ data }) {
             formatter={(value) => `₹${value}`}
           />
 
-          {/* Line */}
+          
           <Line
             type="monotone"
             dataKey="balance"

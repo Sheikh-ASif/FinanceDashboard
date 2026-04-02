@@ -1,4 +1,4 @@
-import { useAppContext } from "../context/AppContext";
+import { useAppContext } from "../Context/AppContext";
 import TransactionTable from "../components/transactions/TransactionTable";
 import Button from "../components/ui/Button";
 

@@ -5,41 +5,62 @@ import Insights from "./pages/Insights";
 
 function App() {
   const [activePage, setActivePage] = useState("dashboard");
-  const [role, setRole] = useState("viewer"); // for RBAC later
+  const [role, setRole] = useState("viewer");
 
   return (
     <div className="app-container">
-      
-      {/* Sidebar */}
       <aside className="sidebar">
-        <h2 className="logo">💰 Finance</h2>
+        <div>
+          <h2 className="logo">💰 Finance</h2>
 
-        <nav>
-          <button onClick={() => setActivePage("dashboard")}>
-            Dashboard
-          </button>
-          <button onClick={() => setActivePage("transactions")}>
-            Transactions
-          </button>
-          <button onClick={() => setActivePage("insights")}>
-            Insights
-          </button>
-        </nav>
+          <nav className="nav">
+            <button
+              className={`nav-item ${activePage === "dashboard" ? "active" : ""}`}
+              onClick={() => setActivePage("dashboard")}
+            >
+              📊 Dashboard
+            </button>
 
-        {/* Role Switch (Important for assignment) */}
+            <button
+              className={`nav-item ${activePage === "transactions" ? "active" : ""}`}
+              onClick={() => setActivePage("transactions")}
+            >
+              💳 Transactions
+            </button>
+
+            <button
+              className={`nav-item ${activePage === "insights" ? "active" : ""}`}
+              onClick={() => setActivePage("insights")}
+            >
+              📈 Insights
+            </button>
+          </nav>
+        </div>
+
         <div className="role-switch">
-          <label>Role:</label>
-          <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="viewer">Viewer</option>
-            <option value="admin">Admin</option>
-          </select>
+          <span className="role-label">Role</span>
+
+          <div className="role-toggle">
+            <button
+              className={`role-btn ${role === "viewer" ? "active" : ""}`}
+              onClick={() => setRole("viewer")}
+            >
+              👁 Viewer
+            </button>
+
+            <button
+              className={`role-btn ${role === "admin" ? "active" : ""}`}
+              onClick={() => setRole("admin")}
+            >
+              🛠 Admin
+            </button>
+          </div>
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="main-content">
         {activePage === "dashboard" && <Dashboard />}
-        {activePage === "transactions" && <Transactions role={role} />}
+        {activePage === "transactions" && <Transactions />}
         {activePage === "insights" && <Insights />}
       </main>
     </div>

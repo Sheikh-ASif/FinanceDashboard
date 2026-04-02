@@ -2,7 +2,7 @@ function SummaryCard({ title, amount, icon, color = "#aa3bff", trend }) {
   return (
     <div className="card summary-card">
       
-      {/* Top Section */}
+     
       <div className="card-header">
         <div
           className="icon-box"
@@ -13,7 +13,7 @@ function SummaryCard({ title, amount, icon, color = "#aa3bff", trend }) {
         <p className="card-title">{title}</p>
       </div>
 
-      {/* Amount */}
+      
       <h2 className="card-amount">
         ₹{amount.toLocaleString()}
       </h2>

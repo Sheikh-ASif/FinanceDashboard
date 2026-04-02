@@ -1,16 +1,45 @@
-# React + Vite
+# Finance Dashboard - React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive finance dashboard built with **React** and **Vite**, featuring transactions tracking, insights, and role-based access control (Viewer/Admin).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Dashboard Overview**
+  - Total Balance, Income, and Expenses summary cards
+  - Clickable cards to filter transactions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Transactions Page**
+  - View all transactions
+  - Filter by type (Income / Expense)
+  - Search and sort transactions
+  - Hover effects for better UI experience
+  - Admin can add new transactions
 
-## Expanding the ESLint configuration
+- **Insights Page**
+  - Highlights top spending categories
+  - Provides simple observations to improve financial habits
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Role-Based Access Control**
+  - Viewer: Can only view data
+  - Admin: Can add transactions
+
+- **Responsive Design**
+  - Works across mobile, tablet, and desktop
+
+- **Dark Mode**
+  - Automatically adapts to system dark mode preferences
+
+---
+
+## Tech Stack
+
+- **React** – Frontend library
+- **Vite** – Development server and build tool
+- **Context API** – Global state management
+- **CSS Variables** – Theme and styling
+- **ESLint** – Linting and code quality
+
+---
+
