@@ -1,8 +1,3 @@
-// ==============================
-// 💰 CALCULATIONS
-// ==============================
-
-// Total Balance (Income - Expense)
 export function calculateBalance(transactions) {
   return transactions.reduce((total, t) => {
     return t.type === "income"
@@ -11,25 +6,18 @@ export function calculateBalance(transactions) {
   }, 0);
 }
 
-// Total Income
 export function calculateIncome(transactions) {
   return transactions
     .filter((t) => t.type === "income")
     .reduce((sum, t) => sum + t.amount, 0);
 }
 
-// Total Expenses
 export function calculateExpenses(transactions) {
   return transactions
     .filter((t) => t.type === "expense")
     .reduce((sum, t) => sum + t.amount, 0);
 }
 
-// ==============================
-// 📊 CHART HELPERS
-// ==============================
-
-// Group expenses by category (Pie Chart)
 export function groupByCategory(transactions) {
   const result = {};
 
@@ -46,7 +34,6 @@ export function groupByCategory(transactions) {
   }));
 }
 
-// Generate running balance for Line Chart
 export function generateLineData(transactions) {
   let balance = 0;
 
@@ -60,25 +47,18 @@ export function generateLineData(transactions) {
   });
 }
 
-// ==============================
-// 📋 TRANSACTION HELPERS
-// ==============================
-
-// Filter transactions
 export function filterTransactions(transactions, type) {
   if (type === "all") return transactions;
 
   return transactions.filter((t) => t.type === type);
 }
 
-// Search transactions (by category)
 export function searchTransactions(transactions, query) {
   return transactions.filter((t) =>
     t.category.toLowerCase().includes(query.toLowerCase())
   );
 }
 
-// Sort transactions
 export function sortTransactions(transactions, key) {
   const sorted = [...transactions];
 
@@ -95,11 +75,6 @@ export function sortTransactions(transactions, key) {
   return transactions;
 }
 
-// ==============================
-// 📈 INSIGHTS HELPERS
-// ==============================
-
-// Get highest spending category
 export function getTopSpendingCategory(transactions) {
   const categoryTotals = {};
 
