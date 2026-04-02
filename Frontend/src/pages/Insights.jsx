@@ -1,9 +1,8 @@
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext } from "../context/AppContext";
 
 function Insights() {
   const { allTransactions } = useAppContext();
 
-  // Calculate category spending
   const categoryTotals = {};
 
   allTransactions.forEach((t) => {
@@ -13,7 +12,6 @@ function Insights() {
     }
   });
 
-  // Find highest spending category
   let highestCategory = "";
   let highestAmount = 0;
 
@@ -25,22 +23,29 @@ function Insights() {
   }
 
   return (
-    <div>
-      <h1>Insights</h1>
+    <div className="insights">
+      <h1 className="page-title">Insights</h1>
 
-      <div className="card">
-        <h3>Top Spending Category</h3>
-        <p>
-          {highestCategory} (₹{highestAmount})
-        </p>
-      </div>
+      <div className="cards">
+        <div className="card insight-card">
+          <h3>Top Spending Category</h3>
+          <p className="insight-value">
+            {highestCategory || "No data"} 
+          </p>
+          <span className="insight-amount">
+            ₹{highestAmount.toLocaleString()}
+          </span>
+        </div>
 
-      <div className="card" style={{ marginTop: "20px" }}>
-        <h3>Observation</h3>
-        <p>
-          You are spending the most on <b>{highestCategory}</b>.
-          Try to manage it for better savings.
-        </p>
+        <div className="card insight-card">
+          <h3>Observation</h3>
+          <p className="insight-text">
+            You are spending the most on{" "}
+            <span className="highlight">
+              {highestCategory || "N/A"}
+            </span>. Try to optimize this for better savings.
+          </p>
+        </div>
       </div>
     </div>
   );
