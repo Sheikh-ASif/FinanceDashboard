@@ -1,15 +1,39 @@
 function TransactionRow({ t }) {
+  const isIncome = t.type === "income";
+
   return (
-    <tr>
-      <td>{t.date}</td>
-      <td>₹{t.amount}</td>
-      <td>{t.category}</td>
+    <tr className="transaction-row">
+      
+      
+      <td className="td-date">
+        {new Date(t.date).toLocaleDateString()}
+      </td>
+
+     
       <td
-        style={{
-          color: t.type === "income" ? "green" : "red",
-        }}
+        className={`td-amount ${
+          isIncome ? "income-text" : "expense-text"
+        }`}
       >
-        {t.type}
+        {isIncome ? "+" : "-"} ₹{t.amount.toLocaleString()}
+      </td>
+
+      
+      <td>
+        <span className="category-badge">
+          {t.category}
+        </span>
+      </td>
+
+      
+      <td>
+        <span
+          className={`status-badge ${
+            isIncome ? "income" : "expense"
+          }`}
+        >
+          {isIncome ? "▲ Income" : "▼ Expense"}
+        </span>
       </td>
     </tr>
   );
