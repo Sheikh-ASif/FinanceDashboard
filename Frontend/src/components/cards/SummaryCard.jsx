@@ -1,10 +1,34 @@
-function SummaryCard({ title, amount }) {
+function SummaryCard({ title, amount, icon, color = "#aa3bff", trend }) {
   return (
-    <div className="card">
-      <h3>{title}</h3>
-      <p style={{ fontSize: "22px", fontWeight: "bold" }}>
-        ₹{amount}
-      </p>
+    <div className="card summary-card">
+      
+      {/* Top Section */}
+      <div className="card-header">
+        <div
+          className="icon-box"
+          style={{ background: `${color}20`, color }}
+        >
+          {icon}
+        </div>
+        <p className="card-title">{title}</p>
+      </div>
+
+      {/* Amount */}
+      <h2 className="card-amount">
+        ₹{amount.toLocaleString()}
+      </h2>
+
+      {/* Trend (optional) */}
+      {trend && (
+        <p
+          className="card-trend"
+          style={{
+            color: trend > 0 ? "green" : "red",
+          }}
+        >
+          {trend > 0 ? "▲" : "▼"} {Math.abs(trend)}%
+        </p>
+      )}
     </div>
   );
 }
