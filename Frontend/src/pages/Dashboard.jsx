@@ -1,8 +1,8 @@
-import SummaryCard from "../components/Cards/SummaryCard";
-import CustomLineChart from "../components/charts/LineChart";
-import CustomPieChart from "../components/charts/PieChart";
+import SummaryCard from "../components/cards/SummaryCard";
+import LineChart from "../components/charts/LineChart";
+import PieChart from "../components/charts/PieChart";
 
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext } from "../context/AppContext";
 import {
   calculateBalance,
   calculateIncome,
@@ -17,8 +17,8 @@ function Dashboard() {
   const income = calculateIncome(allTransactions);
   const expenses = calculateExpenses(allTransactions);
 
-  // Line Chart Data (running balance)
   let runningBalance = 0;
+
   const lineData = allTransactions.map((t) => {
     runningBalance += t.type === "income" ? t.amount : -t.amount;
     return {
@@ -27,24 +27,21 @@ function Dashboard() {
     };
   });
 
-  // Pie Chart Data
   const pieData = groupByCategory(allTransactions);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className="dashboard">
+      <h1 className="page-title">Dashboard</h1>
 
-      {/* Cards */}
       <div className="cards">
         <SummaryCard title="Total Balance" amount={balance} />
         <SummaryCard title="Income" amount={income} />
         <SummaryCard title="Expenses" amount={expenses} />
       </div>
 
-      {/* Charts */}
-      <div className="cards">
-        <CustomLineChart data={lineData} />
-        <CustomPieChart data={pieData} />
+      <div className="charts-grid">
+        <LineChart data={lineData} />
+        <PieChart data={pieData} />
       </div>
     </div>
   );
