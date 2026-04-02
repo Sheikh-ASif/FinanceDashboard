@@ -1,6 +1,9 @@
-function Button({ children, onClick }) {
+function Button({ children, onClick, variant = "primary", fullWidth = false }) {
   return (
-    <button onClick={onClick} style={{ marginBottom: "10px" }}>
+    <button
+      onClick={onClick}
+      className={`btn ${variant} ${fullWidth ? "full" : ""}`}
+    >
       {children}
     </button>
   );
