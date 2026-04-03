@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { transactions as initialData } from "../data/mockData";
+import { transactions as initialData } from "../Data/mockData";
 
 const AppContext = createContext();
 
