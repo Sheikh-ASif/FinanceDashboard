@@ -2,7 +2,7 @@ import SummaryCard from "../components/cards/SummaryCard";
 import LineChart from "../components/charts/LineChart";
 import PieChart from "../components/charts/PieChart";
 
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext } from "../context/AppContext";
 import {
   calculateBalance,
   calculateIncome,

@@ -1,4 +1,4 @@
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext } from "../context/AppContext";
 
 function Insights() {
   const { allTransactions } = useAppContext();
