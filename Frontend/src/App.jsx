@@ -2,10 +2,17 @@ import { useState } from "react";
 import Dashboard from "./pages/Dashboard";
 import Transactions from "./pages/Transactions";
 import Insights from "./pages/Insights";
+import Login from "./pages/Login";
+import { useAppContext } from "./context/AppContext";
 
 function App() {
   const [activePage, setActivePage] = useState("dashboard");
-  const [role, setRole] = useState("viewer");
+  const { user, logout } = useAppContext();
+
+  // 🔐 If not logged in → show login
+  if (!user) {
+    return <Login />;
+  }
 
   return (
     <div className="app-container">
@@ -37,24 +44,12 @@ function App() {
           </nav>
         </div>
 
-        <div className="role-switch">
-          <span className="role-label">Role</span>
+        <div>
+          <p style={{ marginBottom: "10px" }}>👤 {user.email}</p>
 
-          <div className="role-toggle">
-            <button
-              className={`role-btn ${role === "viewer" ? "active" : ""}`}
-              onClick={() => setRole("viewer")}
-            >
-              👁 Viewer
-            </button>
-
-            <button
-              className={`role-btn ${role === "admin" ? "active" : ""}`}
-              onClick={() => setRole("admin")}
-            >
-              🛠 Admin
-            </button>
-          </div>
+          <button onClick={logout} className="logout-btn">
+            🚪 Logout
+          </button>
         </div>
       </aside>
 
