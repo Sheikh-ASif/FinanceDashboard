@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react";
-import { transactions as initialData } from "../Data/mockData";
+import { createContext, useContext, useState, useEffect } from "react";
+import { transactions as initialData } from "../data/mockData";
 
 const AppContext = createContext();
 
@@ -10,6 +10,37 @@ export const AppProvider = ({ children }) => {
   const [role, setRole] = useState("viewer");
   const [filter, setFilter] = useState("all");
 
+  // 🔐 Auth State
+  const [user, setUser] = useState(null);
+
+  // ✅ Load user from localStorage safely
+  useEffect(() => {
+    try {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    } catch (err) {
+      console.error("Error parsing user:", err);
+      localStorage.removeItem("user");
+    }
+  }, []);
+
+  // ✅ UPDATED Login (accepts full object now)
+  const login = (userData) => {
+    if (!userData || !userData.email) return;
+
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+  };
+
+  // ✅ Logout
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  };
+
+  // 💰 Transactions
   const addTransaction = (newTransaction) => {
     setTransactions((prev) => [
       { id: Date.now(), ...newTransaction },
@@ -35,6 +66,11 @@ export const AppProvider = ({ children }) => {
     setRole,
     filter,
     setFilter,
+
+    // 🔐 Auth
+    user,
+    login,
+    logout,
   };
 
   return (
